@@ -25,3 +25,8 @@ class BD:
 
     def cerrar(self):
         self.conexion.close() #Cierra la conexión
+        
+    def obtener_columnas(self, tabla):
+        self.cursor.execute(f"SHOW COLUMNS FROM {tabla}")
+        return [col[0] for col in self.cursor.fetchall()]
+

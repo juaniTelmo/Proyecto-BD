@@ -30,3 +30,5 @@ class Funcionarios:
         sql = "DELETE FROM funcionarios WHERE cuil=%s"
         valores = (self.cuil,)
         bd.ejecutar_cambios(sql, valores)
+    def columnas(self):
+        return bd.obtener_columnas(self.tabla)

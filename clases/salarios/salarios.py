@@ -25,3 +25,6 @@ class Salarios:
         sql = "UPDATE salarios SET año=%s, mes=%s, asignacion_en_pesos=%s, aguinaldo_en_pesos=%s, total_salario_bruto_en_pesos=%s, cuil=%s WHERE id_salario=%s"
         valores = (self.año, self.mes, self.asignacion_en_pesos, self.aguinaldo_en_pesos, self.total_salario_bruto_en_pesos, self.cuil, self.id_salario)
         bd.ejecutar_cambios(sql, valores)
+    def columnas(self):
+        return bd.obtener_columnas(self.tabla)
+        

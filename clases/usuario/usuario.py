@@ -125,3 +125,5 @@ class Usuarios:
     def eliminar_usuario(self, condicion):
         sql = f"DELETE FROM {self.tabla} WHERE {condicion}"
         bd.ejecutar_cambios(sql)
+    def columnas(self):
+        return bd.obtener_columnas(self.tabla)
