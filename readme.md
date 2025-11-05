@@ -12,8 +12,8 @@ Sistema de escritorio desarrollado en Python con Kivy y MySQL que permite:
 ## Clases principales
 - `BD` conexión y consultas MySQL.
 - `Usuario` manejo de usuarios y login.
-- `Salarios` inicialización de objetos 
-- `Funcionarios` inicialización de objetos
+- `Salarios` vincula una tabla con datos a una clase con objetos 
+- `Funcionarios` vincula una tabla con datos a una clase con objetos
 
 ## Metodos principales
 

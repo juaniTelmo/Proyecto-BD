@@ -1,0 +1,33 @@
+<HomeScreen>:
+    name: "HomeScreen"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+        canvas:
+            Color:
+                rgba: 0.9, 0.9, 0.9, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "¡Hola, {}!".format(app.usuario.nombre)
+            font_size: 34
+            bold: True
+            color: (0.6, 0.6, 1, 1)
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        Button:
+            text: "Iniciar sesión"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            on_press: app.ir_a("LoginScreen")
+            background_color: (0.2, 0.6, 1, 1)
+        Button:
+            text: "Registrarse"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            on_press: app.ir_a("RegistroScreen")
+            background_color: (0.2, 0.6, 1, 1)
+
