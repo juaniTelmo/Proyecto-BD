@@ -1,4 +1,4 @@
-from bd import BD
+from bd.bd import BD
 bd = BD()
 
 class Funcionarios:

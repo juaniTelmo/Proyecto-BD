@@ -1,12 +1,11 @@
-from bd import BD
+from bd.bd import BD
 bd = BD()
 
 class Usuarios:
-    def __init__(self):
-        self.tabla = 'usuarios'
-        self.nombre="" 
-        self.email=""
-        self.dni=0
+    def __init__(self,nombre, email, dni):
+        self.nombre=nombre 
+        self.email=email
+        self.dni=dni
         self.user=""
         self.__password=""
 
@@ -56,7 +55,7 @@ class Usuarios:
             
     def email_valido(self,email):
         for letra in email:
-            if letra != "" and( email[letra+1:] =="@gmail.com" or email[letra+1:] == "@pioix.edu.ar"):
+            if letra != "" and(email[letra+1:] =="@gmail.com" or email[letra+1:] == "@pioix.edu.ar"):
                 return True
         else:
             return False
@@ -87,7 +86,7 @@ class Usuarios:
         usuario=input("ingrese su usuario")
         while self.usuario_valido(self,usuario) ==False:
             usuario=input("usuario invalido, intentelo nuevamente")
-        self.usuario=usuario
+        self.user=usuario
 
 
 
@@ -100,7 +99,7 @@ class Usuarios:
         print("Buen dia, inicie sesion:")
     
         usuario=input("ingrese su usuario")
-        while usuario != self.usuario:
+        while usuario != self.user:
             usuario= input("El usuario no existe, ingrese nuevamente: ")
         
         contra=input("ingrese su usuario")

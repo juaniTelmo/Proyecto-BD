@@ -1,0 +1,29 @@
+#:import Window kivy.core.window.Window
+#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
+#:import images_path kivymd.images_path
+<ListaScreen>:
+    name: "ListaScreen"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: 0.9, 0.9, 0.9, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        IconLeftWidget:
+            icon: "arrow-left"
+            on_press: app.ir_a("HomeScreen")
+
+        Label:
+            text: "Lista de Usuarios"
+            color: 0, 0, 0, 1
+            font_size: 32
+        BoxLayout:
+            id: contenedor_tabla
+            orientation: "vertical"
+            size_hint: 1, 1
+            

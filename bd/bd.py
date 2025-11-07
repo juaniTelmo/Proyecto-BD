@@ -6,9 +6,10 @@ class BD:
     def __init__(self):
         #CREO LA CONEXIÓN QUE PERMITE COMUNICARSE CON LA BASE DE DATOS
         self.conexion = mysql.connector.connect(
-            host="181.47.29.35",
+            host="10.1.5.205", #186.23.248.252 remota 10.1.5.205 local
             user="2025-4INF-Grupo01",
-            password="Sueldo_Funcionarios_2024"
+            password="carlitostevez",
+            database="2025-4INF-Grupo01"
         )
         #CREO EL CURSOR QUE PERMITE EJECUTAR CONSULTAS
         self.cursor = self.conexion.cursor() 
