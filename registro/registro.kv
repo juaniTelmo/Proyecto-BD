@@ -5,11 +5,11 @@
     name: "RegistroScreen"
     BoxLayout:
         orientation: "vertical"
-        padding: 20
+        padding: 20, 20, 20, 100
         spacing: 10
         canvas.before:
             Color:
-                rgba: 0.9, 0.9, 0.9, 1
+                rgba: 0.788, 0.824, 0.824, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -18,28 +18,30 @@
             on_press: app.ir_a("HomeScreen")
         Label:
             text: "Sistema de Sueldos"
-            font_size: 24
-            color: (0.6, 0.6, 1, 1)
+            font_size: 100
+            bold: True
+            color: (0, 0, 1, 1)
         TextInput:
             hint_text: "Nombre de usuario"
             size_hint: None, None
-            size: 300, 40
+            size: 450, 60
             pos_hint: {'center_x': 0.5}
         TextInput:
             hint_text: "Correo electrónico"
             size_hint: None, None
-            size: 300, 40
+            size: 450, 60
             pos_hint: {'center_x': 0.5}
         TextInput:
             hint_text: "Contraseña"
             password: True
             size_hint: None, None
-            size: 300, 40
+            size: 450, 60
             pos_hint: {'center_x': 0.5}
         Button:
             text: "Registrarse"
+            font_size: 30
             size_hint: None, None
-            size: 200, 50
+            size: 450, 75
             pos_hint: {'center_x': 0.5}
-            background_color: (0.2, 0.6, 1, 1)
             on_press: app.ir_a("ListaScreen")
+            background_color: (0, 0, 1, 0.8)
