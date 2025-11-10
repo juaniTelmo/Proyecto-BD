@@ -3,7 +3,8 @@ from clases.salarios.salarios import Salarios
 from clases.usuario.usuario import Usuarios
 from bd.bd import BD
 persona1= Usuarios
-
+salario1= Salarios()
+funcionarios1= Funcionarios()
 bd=BD()
 
 # Para instalar KivyMD y Kivy, descomenta las siguientes líneas y ejecútalas en la terminal:

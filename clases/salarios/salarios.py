@@ -27,4 +27,8 @@ class Salarios:
         bd.ejecutar_cambios(sql, valores)
     def columnas(self):
         return bd.obtener_columnas(self.tabla)
-        
+    
+    def mostrar_tabla(self):
+        sql = f"SELECT * FROM {self.tabla}"
+        resultados = bd.consultar_datos(sql)
+        return resultados

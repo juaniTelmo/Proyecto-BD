@@ -3,14 +3,17 @@ from kivymd.app import MDApp
 from kivy.metrics import dp
 from kivymd.uix.datatables import MDDataTable
 from kivymd.uix.screen import MDScreen
+from clases.funcionarios.funcionarios import Funcionarios
+from main import funcionarios1
+asd=Funcionarios()
 
 class ListaScreen(MDScreen):
     data_table = None
 
     def on_pre_enter(self, *args):
         app = MDApp.get_running_app()
-        columnas = app.usuario.columnas() 
-        filas = app.usuario.mostrar_tabla()
+        columnas = Funcionarios.columnas(funcionarios1) 
+        filas = Funcionarios.mostrar_tabla(funcionarios1)
 
         # Columnas
         column_data = []
