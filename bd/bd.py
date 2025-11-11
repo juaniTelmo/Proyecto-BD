@@ -13,7 +13,9 @@ class BD:
         )
         #CREO EL CURSOR QUE PERMITE EJECUTAR CONSULTAS
         self.cursor = self.conexion.cursor() 
-
+    def obtener_columnas(self, tabla):
+        self.cursor.execute(f"SHOW COLUMNS FROM {tabla}")
+        return [col[0] for col in self.cursor.fetchall()]
 # Método para generar consultas para obtener datos (SELECT)
     def consultar_datos(self, sql):
         self.cursor.execute(sql) #Ejecuta la consulta SQL
@@ -26,8 +28,4 @@ class BD:
 
     def cerrar(self):
         self.conexion.close() #Cierra la conexión
-        
-    def obtener_columnas(self, tabla):
-        self.cursor.execute(f"SHOW COLUMNS FROM {tabla}")
-        return [col[0] for col in self.cursor.fetchall()]
 

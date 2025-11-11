@@ -12,7 +12,8 @@ class Salarios:
         self.cuil=""
 
     #funciones propias de la clase
-
+    def columnas(self):
+        return bd.obtener_columnas(self.tabla)
     #funciones con BD
     def insertar_salario(self):
         sql = "INSERT INTO salarios (año, mes, asignacion_en_pesos, aguinaldo_en_pesos, total_salario_bruto_en_pesos, cuil) VALUES (%s, %s, %s, %s, %s, %s)"

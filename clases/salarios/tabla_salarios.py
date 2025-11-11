@@ -4,14 +4,13 @@ from kivy.metrics import dp
 from kivymd.uix.datatables import MDDataTable
 from kivymd.uix.screen import MDScreen
 from clases.salarios.salarios import Salarios
-from main import salario1
-class ListaScreen(MDScreen):
+class ListaSalariosScreen(MDScreen):
     data_table = None
 
     def on_pre_enter(self, *args):
-        app = MDApp.get_running_app()
-        columnas = Salarios.columnas(salario1) 
-        filas = Salarios.mostrar_tabla(salario1)
+        salario = Salarios()
+        columnas = salario.columnas()
+        filas = salario.mostrar_tabla()
 
         # Columnas
         column_data = []

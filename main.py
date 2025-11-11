@@ -2,10 +2,6 @@ from clases.funcionarios.funcionarios import Funcionarios
 from clases.salarios.salarios import Salarios
 from clases.usuario.usuario import Usuarios
 from bd.bd import BD
-persona1= Usuarios
-salario1= Salarios()
-funcionarios1= Funcionarios()
-bd=BD()
 
 # Para instalar KivyMD y Kivy, descomenta las siguientes líneas y ejecútalas en la terminal:
 # py -m pip install kivymd
@@ -21,8 +17,8 @@ from kivy.lang import Builder
 from clases.usuario.usuario import Usuarios
 # Importo las pantallas
 from login.login import LoginScreen
-from clases.funcionarios.tabla_funcionarios import ListaScreen
-from clases.salarios.tabla_salarios import ListaScreen
+from clases.funcionarios.tabla_funcionarios import ListaFuncionariosScreen
+from clases.salarios.tabla_salarios import ListaSalariosScreen
 from inicio.inicio import HomeScreen
 from registro.registro import RegistroScreen
 
@@ -36,12 +32,16 @@ class MiApp(MDApp):
         Builder.load_file("registro/registro.kv")
         Builder.load_file("clases/salarios/tabla_salarios.kv")
         Builder.load_file("clases/funcionarios/tabla_funcionarios.kv")
+        Builder.load_file("clases/salarios/tabla_salarios.kv")
+
         sm = ScreenManager()
         # Agrego las pantallas al ScreenManager
         sm.add_widget(HomeScreen(name="HomeScreen"))
         sm.add_widget(LoginScreen(name="LoginScreen"))
         sm.add_widget(RegistroScreen(name="RegistroScreen"))
-        sm.add_widget(ListaScreen(name="ListaScreen"))
+        sm.add_widget(ListaFuncionariosScreen(name="ListaFuncionariosScreen"))
+        sm.add_widget(ListaSalariosScreen(name="ListaSalariosScreen"))
+
         # Establezco la pantalla inicial
         sm.current = "HomeScreen"
         return sm

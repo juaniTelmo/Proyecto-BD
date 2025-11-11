@@ -2,7 +2,7 @@ from bd.bd import BD
 bd = BD()
 
 class Funcionarios:
-    def __init__(self,):
+    def __init__(self):
         self.tabla = 'funcionarios'
         self.cuil=0
         self.apellido_y_nombre="" 
@@ -10,7 +10,8 @@ class Funcionarios:
         self.observaciones=""
 
     #funciones propias de la clase
-
+    def columnas(self):
+        return bd.obtener_columnas(self.tabla)
     #funciones con BD
     def insertar_funcionario(self):
         sql = "INSERT INTO funcionarios (cuil, apellido_y_nombre, reparticion, observaciones) VALUES (%s, %s, %s, %s)"
@@ -30,8 +31,6 @@ class Funcionarios:
         sql = "DELETE FROM funcionarios WHERE cuil=%s"
         valores = (self.cuil,)
         bd.ejecutar_cambios(sql, valores)
-    def columnas(self):
-        return bd.obtener_columnas(self.tabla)
     
     def mostrar_tabla(self):
         sql = f"SELECT * FROM {self.tabla}"
