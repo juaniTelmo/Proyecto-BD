@@ -5,43 +5,102 @@
     name: "RegistroScreen"
     BoxLayout:
         orientation: "vertical"
-        padding: 20, 20, 20, 100
         spacing: 10
         canvas.before:
             Color:
                 rgba: 0.788, 0.824, 0.824, 1
             Rectangle:
                 pos: self.pos
-                size: self.size
+                size: 100, 80
         IconLeftWidget:
             icon: "arrow-left"
             on_press: app.ir_a("HomeScreen")
         Label:
             text: "Sistema de Sueldos"
-            font_size: 100
-            bold: True
+            font_size: 26
             color: (0, 0, 1, 1)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+
+        Label:
+            id: datos_cargados
+            color: (1, 0, 0, 1)
+            size_hint: 1, 1
+            text:''
+            disabled: True
+            opacity: 1
+            pos_hint: {'center_x': 0.5}
+           
         TextInput:
+            id: nombre_imput
             hint_text: "Nombre de usuario"
             size_hint: None, None
             size: 450, 60
             pos_hint: {'center_x': 0.5}
+
+        Label:
+            id: nombre_invalido
+            color: (1, 0, 0, 1)
+            size_hint: 1, 1
+            text: 'Nombre inválido.'
+            disabled: True
+            opacity: 0
+            pos_hint: {'center_x': 0.5}
+
         TextInput:
+            id: correo_input
             hint_text: "Correo electrónico"
             size_hint: None, None
             size: 450, 60
             pos_hint: {'center_x': 0.5}
+
+        Label:
+            id: correo_invalido
+            color: (1, 0, 0, 1)
+            size_hint: 1, 1
+            text: 'Correo electrónico inválido. Debe contener "@gmail.com" o "@pioix.edu.ar'
+            disabled: True
+            opacity: 1
+            pos_hint: {'center_x': 0.5}
+
         TextInput:
+            id: dni_input
+            hint_text: "DNI"
+            size_hint: None, None
+            size: 450, 60
+            input_filter: 'int'
+            pos_hint: {'center_x': 0.5}
+
+
+        Label:
+            id: dni_invalido
+            color: (1, 0, 0, 1)
+            size_hint: 1, 1
+            text:'Debe contener solo números y tener 8 dígitos.'
+            disabled: True
+            opacity: 0
+            pos_hint: {'center_x': 0.5}
+
+        TextInput:
+            id: contrasena_input
             hint_text: "Contraseña"
             password: True
             size_hint: None, None
             size: 450, 60
             pos_hint: {'center_x': 0.5}
-        Button:
-            text: "Registrarse"
-            font_size: 30
-            size_hint: None, None
-            size: 450, 75
+
+        Label:
+            id: contrasena_invalida
+            color: (1, 0, 0, 1)
+            text:'Debe contener al menos 8 caracteres (1 mayúscula, 1 minúscula y 1 número).'
+            disabled: True
+            opacity: 0
             pos_hint: {'center_x': 0.5}
-            on_press: app.ir_a("ListaFuncionariosScreen")
-            background_color: (0, 0, 1, 0.8)
+
+
+        Button:
+                text: "Registrarse"
+            size_hint: None, None
+            size: 200, 50
+            background_color: (0.2, 0.6, 1, 1)
+            on_press: root.validar_registro(nombre_input.text, correo_input.text, dni_input.text, contrasena_input.text)
+            pos_hint: {'center_x': 0.5}

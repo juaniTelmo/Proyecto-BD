@@ -1,5 +1,4 @@
 from kivymd.app import MDApp
-from kivymd.app import MDApp
 from kivy.metrics import dp
 from kivymd.uix.datatables import MDDataTable
 from kivymd.uix.screen import MDScreen
