@@ -1,12 +1,12 @@
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 from kivy.uix.label import Label
-from clases.usuario.usuario import Usuario
+from clases.usuario.usuario import Usuarios
 
 
 class RegistroScreen(Screen):
     def validar_registro(self, nombre, correo, dni, contrasena):
-        usuario = Usuario(nombre.capitalize(), correo, dni, contrasena)
+        usuario = Usuarios(nombre.capitalize(), correo, dni, contrasena)
         if not nombre or not correo or not dni or not contrasena:
             self.ids.datos_cargados.text = 'Por favor, complete todos los campos.'
             self.ids.datos_cargados.disabled = False

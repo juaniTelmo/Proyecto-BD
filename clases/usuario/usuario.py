@@ -2,12 +2,13 @@ from bd.bd import BD
 bd = BD()
 
 class Usuarios:
-    def __init__(self,nombre, email, dni):
+    def __init__(self,nombre, email, dni,password):
+        self.tabla="usuarios"
         self.nombre=nombre 
         self.email=email
         self.dni=dni
         self.user=""
-        self.__password=""
+        self.__password=password
 
 
     def get_password(self):
@@ -42,7 +43,7 @@ class Usuarios:
     def contrasena_valida(self,password):
         if len(password)>8:
             for letra in password:
-                if letra.isadigit():
+                if letra.isdigit():
                     num=True
                 if letra.upper()==letra:
                     mayus=True 
@@ -52,13 +53,19 @@ class Usuarios:
                 return True
             else:
                 return False
-            
-    def email_valido(self,email):
-        for letra in email:
-            if letra != "" and(email[letra+1:] =="@gmail.com" or email[letra+1:] == "@pioix.edu.ar"):
+                
+    def email_valido(self, email):
+            cont=0
+            if "@pioix.edu.ar" in email or "@gmail.com" in email:
+                for c in email:
+                    if c != "@":
+                        cont+=1
+                    if c == "@":
+                        break
+            if cont >=1:
                 return True
-        else:
-            return False
+            else:
+                return False
         
     def registrarse(self):
         print("Buen dia, registrese:")
@@ -110,7 +117,7 @@ class Usuarios:
 
     #INSERTAR USUARIO EN LA BASE DE DATOS 
     def insertar_usuario(self):
-        sql = f"INSERT INTO {self.tabla} (nombre, email, dni, user, password) VALUES (%s,%s,%s,%s,%s)" 
+        sql = f"INSERT INTO {self.tabla} (nombre, email, dni, pass) VALUES (%s,%s,%s,%s)" 
         valores = (self.nombre, self.email, self.dni, self.user, self.get_password()) #Tupla con los valores a insertar
         bd.ejecutar_cambios(sql, valores) #Ejecuto la consulta para insertar el usuario
 

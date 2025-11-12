@@ -1,0 +1,48 @@
+#:import Window kivy.core.window.Window
+#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
+#:import images_path kivymd.images_path
+<PerfilScreen>:
+    name: "PerfilScreen"
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+        padding: "10dp"
+        adaptive_height: True
+        halign: "left"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        IconLeftWidget:
+            icon: "arrow-left"
+            on_press: app.ir_a("ListaScreen")
+
+        Label:
+            text: "Mi perfil"
+            halign: "left"
+            font_size: 20
+            color: (0,0,1,1)
+        Label:
+            id: nombre_usuario
+            text: "Nombre: "
+            halign: "left"
+            color: (0,0,1,1)
+
+        Label:
+            id: email_usuario
+            text: "Email: "
+            halign: "left"
+            color: (0,0,1,1)
+
+        Label:
+            id: dni_usuario
+            text: "DNI: "
+            halign: "left"
+            color: (0,0,1,1)
+
+        # Button:
+        #     text: "Editar perfil"
+        #     pos_hint: {"center_x": 0.5}
+        #     md_bg_color: app.theme_cls.primary_color
+        #     size_hint: None, None
+        #     size: 200, 50
+        #     on_press: app.ir_a("ListaScreen")

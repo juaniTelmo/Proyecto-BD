@@ -2,9 +2,9 @@ from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp #Agregar
 from kivy.clock import Clock #Agregar
 from bd.bd import BD
-from clases.usuario.usuario import Usuario #Agregar
+from clases.usuario.usuario import Usuarios #Agregar
 bd = BD()
-usu = Usuario("", "", "", "") #Agregar
+usu = Usuarios("", "", "", "") #Agregar
 class LoginScreen(Screen): 
     def validar_datos(self): #Agregar método
         usuarioIngresado = self.ids.txt_usuario.text
