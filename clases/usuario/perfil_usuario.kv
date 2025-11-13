@@ -1,51 +1,59 @@
-#:import Window kivy.core.window.Window
-#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
-#:import images_path kivymd.images_path
-<PerfilScreen>:
+<PerfilScreen@MDScreen>:
     name: "PerfilScreen"
 
-    BoxLayout:
+    MDBoxLayout:
         orientation: "vertical"
-        spacing: "10dp"
-        padding: "10dp"
-        adaptive_height: True
-        halign: "left"
-        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        md_bg_color: app.theme_cls.bg_dark
+        padding: "20dp"
+        spacing: "20dp"
 
-        IconLeftWidget:
-            icon: "home"
-            on_press: app.ir_a("HomeScreen")
-        IconRightWidget:
-            icon: "arrow-right"
-            on_press: app.ir_a("ListaFuncionariosScreen")
+        MDTopAppBar:
+            title: "Mi Perfil"
+            elevation: 4
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [["home", lambda x: app.ir_a("HomeScreen")]]
+            right_action_items: [["arrow-right", lambda x: app.ir_a("ListaFuncionariosScreen")]]
 
-        Label:
-            text: "Mi perfil"
-            halign: "left"
-            font_size: 20
-            color: (0,0,1,1)
-        Label:
-            id: nombre_usuario
-            text: "Nombre: "
-            halign: "left"
-            color: (0,0,1,1)
+        MDLabel:
+            text: "Información del usuario"
+            halign: "center"
+            font_style: "H5"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
 
-        Label:
-            id: email_usuario
-            text: "Email: "
-            halign: "left"
-            color: (0,0,1,1)
+        MDCard:
+            orientation: "vertical"
+            padding: "20dp"
+            spacing: "10dp"
+            radius: 20
+            md_bg_color: app.theme_cls.bg_light
 
-        Label:
-            id: dni_usuario
-            text: "DNI: "
-            halign: "left"
-            color: (0,0,1,1)
+            MDLabel:
+                id: nombre_usuario
+                text: "Nombre: "
+                halign: "left"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
 
-        # Button:
+            MDLabel:
+                id: email_usuario
+                text: "Email: "
+                halign: "left"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+            MDLabel:
+                id: dni_usuario
+                text: "DNI: "
+                halign: "left"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+        # Descomentar si querés un botón de edición
+        # MDRaisedButton:
         #     text: "Editar perfil"
-        #     pos_hint: {"center_x": 0.5}
         #     md_bg_color: app.theme_cls.primary_color
+        #     pos_hint: {"center_x": 0.5}
         #     size_hint: None, None
-        #     size: 200, 50
-        #     on_press: app.ir_a("ListaScreen")
+        #     size: "200dp", "50dp"
+        #     on_release: app.ir_a("EditarPerfilScreen")

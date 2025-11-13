@@ -36,3 +36,7 @@ class Funcionarios:
         sql = f"SELECT * FROM {self.tabla}"
         resultados = bd.consultar_datos(sql)
         return resultados    
+    def buscar_funcionarios(self, condicion):
+        sql = f"SELECT * FROM {self.tabla} WHERE {condicion}"
+        resultados = bd.consultar_datos(sql)
+        return resultados

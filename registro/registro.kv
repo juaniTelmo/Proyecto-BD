@@ -1,106 +1,99 @@
-#:import Window kivy.core.window.Window
-#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
-#:import images_path kivymd.images_path
-<RegistroScreen>:
+<RegistroScreen@MDScreen>:
     name: "RegistroScreen"
-    BoxLayout:
-        orientation: "vertical"
-        spacing: 10
-        canvas.before:
-            Color:
-                rgba: 0.788, 0.824, 0.824, 1
-            Rectangle:
-                pos: self.pos
-                size: 100, 80
-        IconLeftWidget:
-            icon: "arrow-left"
-            on_press: app.ir_a("HomeScreen")
-        Label:
-            text: "Sistema de Sueldos"
-            font_size: 26
-            color: (0, 0, 1, 1)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.1}
 
-        Label:
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+        md_bg_color: app.theme_cls.bg_dark
+
+        MDTopAppBar:
+            title: "Registro"
+            elevation: 4
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [["arrow-left", lambda x: app.ir_a("HomeScreen")]]
+
+        MDLabel:
+            text: "Sistema de Sueldos"
+            halign: "center"
+            font_style: "H5"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+
+        MDLabel:
             id: datos_cargados
-            color: (1, 0, 0, 1)
-            size_hint: 1, 1
-            text:''
-            disabled: True
+            text: ""
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 0.2, 0.2, 1
             opacity: 1
-            pos_hint: {'center_x': 0.5}
-           
-        TextInput:
+
+        MDTextField:
             id: nombre_input
             hint_text: "Nombre de usuario"
-            size_hint: None, None
-            size: 450, 60
-            pos_hint: {'center_x': 0.5}
+            mode: "rectangle"
+            size_hint_x: 0.8
+            pos_hint: {"center_x": 0.5}
 
-        Label:
+        MDLabel:
             id: nombre_invalido
-            color: (1, 0, 0, 1)
-            size_hint: 1, 1
-            text: 'Nombre inválido.'
-            disabled: True
+            text: "Nombre inválido."
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 0.2, 0.2, 1
             opacity: 0
-            pos_hint: {'center_x': 0.5}
 
-        TextInput:
+        MDTextField:
             id: correo_input
             hint_text: "Correo electrónico"
-            size_hint: None, None
-            size: 450, 60
-            pos_hint: {'center_x': 0.5}
+            mode: "rectangle"
+            size_hint_x: 0.8
+            pos_hint: {"center_x": 0.5}
 
-        Label:
+        MDLabel:
             id: correo_invalido
-            color: (1, 0, 0, 1)
-            size_hint: 1, 1
-            text: 'Correo electrónico inválido. Debe contener "@gmail.com" o "@pioix.edu.ar'
-            disabled: True
-            opacity: 1
-            pos_hint: {'center_x': 0.5}
+            text: "Correo inválido. Debe contener '@gmail.com' o '@pioix.edu.ar'"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 0.2, 0.2, 1
+            opacity: 0
 
-        TextInput:
+        MDTextField:
             id: dni_input
             hint_text: "DNI"
-            size_hint: None, None
-            size: 450, 60
-            input_filter: 'int'
-            pos_hint: {'center_x': 0.5}
+            mode: "rectangle"
+            size_hint_x: 0.8
+            pos_hint: {"center_x": 0.5}
+            input_filter: "int"
 
-
-        Label:
+        MDLabel:
             id: dni_invalido
-            color: (1, 0, 0, 1)
-            size_hint: 1, 1
-            text:'Debe contener solo números y tener 8 dígitos.'
-            disabled: True
+            text: "Debe tener 8 dígitos numéricos."
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 0.2, 0.2, 1
             opacity: 0
-            pos_hint: {'center_x': 0.5}
 
-        TextInput:
+        MDTextField:
             id: contrasena_input
             hint_text: "Contraseña"
+            mode: "rectangle"
             password: True
-            size_hint: None, None
-            size: 450, 60
-            pos_hint: {'center_x': 0.5}
+            size_hint_x: 0.8
+            pos_hint: {"center_x": 0.5}
 
-        Label:
+        MDLabel:
             id: contrasena_invalida
-            color: (1, 0, 0, 1)
-            text:'Debe contener al menos 8 caracteres (1 mayúscula, 1 minúscula y 1 número).'
-            disabled: True
+            text: "Debe contener 8+ caracteres, una mayúscula, una minúscula y un número."
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 0.2, 0.2, 1
             opacity: 0
-            pos_hint: {'center_x': 0.5}
 
-
-        Button:
+        MDRaisedButton:
             text: "Registrarse"
+            md_bg_color: app.theme_cls.primary_color
+            pos_hint: {"center_x": 0.5}
             size_hint: None, None
-            size: 200, 50
-            background_color: (0.2, 0.6, 1, 1)
-            on_press: root.validar_registro(nombre_input.text, correo_input.text, dni_input.text, contrasena_input.text)
-            pos_hint: {'center_x': 0.5}
+            size: "200dp", "50dp"
+            on_release: root.validar_registro(nombre_input.text, correo_input.text, dni_input.text, contrasena_input.text)

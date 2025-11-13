@@ -1,35 +1,36 @@
-<HomeScreen>:
+<HomeScreen@MDScreen>:
     name: "HomeScreen"
-    BoxLayout:
-        orientation: "vertical"
-        padding: 20, 20, 20, 150
-        spacing: 10
-        canvas:
-            Color:
-                rgba: 0.788, 0.824, 0.824, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-        Label:
-            text: "¡Hola, usuario!"
-            font_size: 100
-            bold: True
-            color: (0, 0, 1, 1)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
-        Button:
-            text: "Iniciar sesión"
-            font_size: 30
-            size_hint: None, None
-            size: 300, 75
-            pos_hint: {'center_x': 0.5}
-            on_press: app.ir_a("LoginScreen")
-            background_color: (0, 0, 1, 0.8)
-        Button:
-            text: "Registrarse"
-            font_size: 30
-            size_hint: None, None
-            size: 300, 75
-            pos_hint: {'center_x': 0.5}
-            on_press: app.ir_a("RegistroScreen")
-            background_color: (0, 0, 1, 0.8)
 
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "40dp"
+        padding: "30dp"
+        md_bg_color: app.theme_cls.bg_dark
+
+        MDLabel:
+            text: "¡Hola, usuario!"
+            halign: "center"
+            font_style: "H3"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "20dp"
+            size_hint_y: None
+            height: self.minimum_height
+            pos_hint: {"center_x": 0.5}
+
+            MDFillRoundFlatButton:
+                text: "Iniciar sesión"
+                pos_hint: {"center_x": 0.5}
+                size_hint: None, None
+                size: "260dp", "60dp"
+                on_release: app.ir_a("LoginScreen")
+
+            MDFillRoundFlatButton:
+                text: "Registrarse"
+                pos_hint: {"center_x": 0.5}
+                size_hint: None, None
+                size: "260dp", "60dp"
+                on_release: app.ir_a("RegistroScreen")

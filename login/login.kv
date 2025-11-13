@@ -1,48 +1,51 @@
-#:import Window kivy.core.window.Window
-#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
-#:import images_path kivymd.images_path
-<LoginScreen>:
+<LoginScreen@MDScreen>:
     name: "LoginScreen"
-    BoxLayout:
-        id: boxmensaje 
+
+    MDBoxLayout:
         orientation: "vertical"
-        padding: 20
-        spacing: 10
-        canvas.before:
-            Color:
-                rgba: 0.788, 0.824, 0.824, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-        IconLeftWidget:
-            icon: "arrow-left"
-            on_press: app.ir_a("HomeScreen")
-        Label:
+        padding: "20dp"
+        spacing: "20dp"
+        md_bg_color: app.theme_cls.bg_dark
+
+        MDTopAppBar:
+            title: "Iniciar sesión"
+            elevation: 4
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [["arrow-left", lambda x: app.ir_a("HomeScreen")]]
+
+        MDLabel:
             text: "Sistema de Sueldos"
-            font_size: 100
-            bold: True
-            color: (0, 0, 1, 1)
-        TextInput:
+            halign: "center"
+            font_style: "H4"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+
+        MDTextField:
             id: txt_usuario
             hint_text: "Correo electrónico"
-            size_hint: None, None
-            size: 300, 40
-            pos_hint: {'center_x': 0.5}
-        TextInput:
-            id: txt_pass 
+            mode: "rectangle"
+            size_hint_x: 0.8
+            pos_hint: {"center_x": 0.5}
+
+        MDTextField:
+            id: txt_pass
             hint_text: "Contraseña"
             password: True
-            size_hint: None, None
-            size: 300, 40
-            pos_hint: {'center_x': 0.5}
-        Label: 
+            mode: "rectangle"
+            size_hint_x: 0.8
+            pos_hint: {"center_x": 0.5}
+
+        MDLabel:
             id: mensaje
             text: ""
-            color: (1, 0, 0, 1)
-        Button:
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 0.2, 0.2, 1
+
+        MDRaisedButton:
             text: "Iniciar sesión"
+            md_bg_color: app.theme_cls.primary_color
             size_hint: None, None
-            size: 200, 50
-            pos_hint: {'center_x': 0.5}
-            background_color: (0.2, 0.6, 1, 1)
-            on_press: root.validar_datos() 
+            size: "200dp", "50dp"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.validar_datos()

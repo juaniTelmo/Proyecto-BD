@@ -1,33 +1,34 @@
-#:import Window kivy.core.window.Window
-#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
-#:import images_path kivymd.images_path
-<ListaFuncionariosScreen>:
+<ListaFuncionariosScreen@MDScreen>:
     name: "ListaFuncionariosScreen"
-    BoxLayout:
+
+    MDBoxLayout:
         orientation: "vertical"
-        padding: 20
-        spacing: 10
-        canvas.before:
-            Color:
-                rgba: 0.9, 0.9, 0.9, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        md_bg_color: app.theme_cls.bg_dark
+        padding: "10dp"
+        spacing: "10dp"
 
-        IconLeftWidget:
-            icon: "home"
-            on_press: app.ir_a("HomeScreen")
-        IconRightWidget:
-            icon: "arrow-right"
-            on_press: app.ir_a("ListaSalariosScreen")
+        MDTopAppBar:
+            title: "Funcionarios Argentinos"
+            elevation: 4
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [["home", lambda x: app.ir_a("HomeScreen")]]
+            right_action_items: [["arrow-left", lambda x: app.ir_a("ListaSalariosScreen")],["arrow-right", lambda x: app.ir_a("BuscarFuncionariosScreen")]]
 
+        MDLabel:
+            text: "Listado de Funcionarios"
+            halign: "center"
+            font_style: "H5"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
 
-        Label:
-            text: "Lista de Funcionarios Argentinos"
-            color: 0, 0, 0, 1
-            font_size: 32
-        BoxLayout:
-            id: contenedor_tabla
+        MDCard:
+            radius: 20
+            padding: "15dp"
+            md_bg_color: app.theme_cls.bg_light
             orientation: "vertical"
-            size_hint: 1, 1
-            
+            size_hint_y: 1
+
+            MDBoxLayout:
+                id: contenedor_tabla
+                orientation: "vertical"
+                size_hint_y: 1

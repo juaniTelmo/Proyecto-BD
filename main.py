@@ -13,6 +13,7 @@ from kivy.metrics import dp
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
 from kivy.lang import Builder
+from kivymd.uix.screen import MDScreen
 # Importo la clase Usuario
 from clases.usuario.usuario import Usuarios
 # Importo las pantallas
@@ -23,11 +24,19 @@ from inicio.inicio import HomeScreen
 from registro.registro import RegistroScreen
 from clases.usuario.perfil_usuario import PerfilScreen
 from programadores.programadores import ProgramadoresScreen
+from buscar_funcionarios.buscar_funcionarios import BuscarFuncionariosScreen
+
 
 # Defino la clase principal de la aplicación
+
 class MiApp(MDApp):
+    
     # Método build para construir la aplicación
     def build(self):
+
+        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "BlueGray"
+        
         # Cargo los archivos .kv de cada pantalla
         self.usuario_actual = None
         Builder.load_file("inicio/inicio.kv")
@@ -37,6 +46,8 @@ class MiApp(MDApp):
         Builder.load_file("clases/funcionarios/tabla_funcionarios.kv")
         Builder.load_file("clases/usuario/perfil_usuario.kv")
         Builder.load_file("programadores/programadores.kv")
+        Builder.load_file("buscar_funcionarios/buscar_funcionarios.kv")
+
 
         sm = ScreenManager()
         # Agrego las pantallas al ScreenManager
@@ -47,6 +58,8 @@ class MiApp(MDApp):
         sm.add_widget(ListaFuncionariosScreen(name="ListaFuncionariosScreen"))
         sm.add_widget(ListaSalariosScreen(name="ListaSalariosScreen"))
         sm.add_widget(ProgramadoresScreen(name="ProgramadoresScreen"))
+        sm.add_widget(BuscarFuncionariosScreen(name="BuscarFuncionariosScreen"))
+        
         # Establezco la pantalla inicial
         sm.current = "HomeScreen"
         return sm
@@ -54,7 +67,7 @@ class MiApp(MDApp):
     def ir_a(self, nombre_pantalla: str):
         # Cambia a la pantalla especificada sin animación
         self.root.current = nombre_pantalla
-        
+
 #Corro la aplicación
 if __name__ == "__main__":
     MiApp().run()
