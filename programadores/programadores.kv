@@ -1,0 +1,53 @@
+#:import Window kivy.core.window.Window
+#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
+#:import images_path kivymd.images_path
+<ProgramadoresScreen>:
+    name: "ProgramadoresScreen"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: 0.9, 0.9, 0.9, 1
+            Rectangle:
+                pos: self.pos
+                size: 100, 80
+        IconLeftWidget:
+            icon: "home"
+            on_press: app.ir_a("HomeScreen") 
+            pos_hint: {'center_x':0, 'center_y':1}
+        IconLeftWidget:
+            icon: "arrow-left"
+            on_press: app.ir_a("ListaSalariosScreen") 
+            pos_hint: {'center_x':0, 'center_y':1}
+        GridLayout:
+            cols: 2
+            rows: 4
+            Image:
+                source: ("images/background-1634817.jpg")
+            Label:
+                text:"1"
+                size_hint: 1, 1
+                color: (0,0,1,1)
+
+            Image:
+                source: ("images/background-1634817.jpg")
+            Label:
+                text:"2"
+                size_hint: 1, 1
+                color: (0,0,1,1)
+
+            Image:
+                source: ("images/background-1634817.jpg")
+            Label:
+                text:"3"
+                size_hint: 1, 1
+                color: (0,0,1,1)
+
+            Image:
+                source: ("images/background-1634817.jpg")
+            Label:
+                text:"4"
+                size_hint: 1, 1
+                color: (0,0,1,1)

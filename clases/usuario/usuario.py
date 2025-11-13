@@ -115,21 +115,30 @@ class Usuarios:
 
 #funciones con BD
 
-    #INSERTAR USUARIO EN LA BASE DE DATOS 
+  #INSERTAR USUARIO EN LA BASE DE DATOS DESDE LA CLASE USUARIO
     def insertar_usuario(self):
-        sql = f"INSERT INTO {self.tabla} (nombre, email, dni, pass) VALUES (%s,%s,%s,%s)" 
-        valores = (self.nombre, self.email, self.dni, self.user, self.get_password()) #Tupla con los valores a insertar
+        sql = f"INSERT INTO {self.tabla} (nombre, email, dni, pass) VALUES (%s,%s,%s,%s)" #%s: es un marcador de posición para cada valor
+        valores = (self.nombre, self.email, self.dni, self.get_password() )#Tupla con los valores a insertar
         bd.ejecutar_cambios(sql, valores) #Ejecuto la consulta para insertar el usuario
 
     #ACTUALIZAR UN USUARIO SEGUN UNA CONDICION DICHA POR PARAMETRO
     def actualizar_usuario(self, condicion, nuevos_valores):
-        sql = f"UPDATE {self.tabla} SET nombre=%s, email=%s, dni=%s, user=%s, password=%s WHERE {condicion}"
-        valores = (nuevos_valores[0], nuevos_valores[1], nuevos_valores[2], nuevos_valores[3], nuevos_valores[4])
+        sql = f"UPDATE {self.tabla} SET nombre=%s, email=%s, dni=%s, pass=%s WHERE {condicion}"
+        valores = (nuevos_valores[0], nuevos_valores[1], nuevos_valores[2], nuevos_valores[3])
         bd.ejecutar_cambios(sql, valores)
 
     #ELIMINAR UN USUARIO SEGUN UNA CONDICION DICHA POR PARAMETRO
     def eliminar_usuario(self, condicion):
         sql = f"DELETE FROM {self.tabla} WHERE {condicion}"
         bd.ejecutar_cambios(sql)
-    def columnas(self):
-        return bd.obtener_columnas(self.tabla)
+
+    #BUSCAR USUARIO SEGUN UNA CONDICION DICHA POR PARAMETRO
+    def buscar_usuario(self, condicion):
+        sql = f"SELECT * FROM {self.tabla} WHERE {condicion}"
+        resultados = bd.consultar_datos(sql)
+        return resultados
+    
+    def mostrar_tabla(self):
+        sql = f"SELECT * FROM {self.tabla}"
+        resultados = bd.consultar_datos(sql)
+        return resultados

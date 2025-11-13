@@ -21,27 +21,32 @@ from clases.funcionarios.tabla_funcionarios import ListaFuncionariosScreen
 from clases.salarios.tabla_salarios import ListaSalariosScreen
 from inicio.inicio import HomeScreen
 from registro.registro import RegistroScreen
+from clases.usuario.perfil_usuario import PerfilScreen
+from programadores.programadores import ProgramadoresScreen
 
 # Defino la clase principal de la aplicación
 class MiApp(MDApp):
     # Método build para construir la aplicación
     def build(self):
         # Cargo los archivos .kv de cada pantalla
+        self.usuario_actual = None
         Builder.load_file("inicio/inicio.kv")
         Builder.load_file("login/login.kv")
         Builder.load_file("registro/registro.kv")
         Builder.load_file("clases/salarios/tabla_salarios.kv")
         Builder.load_file("clases/funcionarios/tabla_funcionarios.kv")
-        Builder.load_file("clases/salarios/tabla_salarios.kv")
+        Builder.load_file("clases/usuario/perfil_usuario.kv")
+        Builder.load_file("programadores/programadores.kv")
 
         sm = ScreenManager()
         # Agrego las pantallas al ScreenManager
         sm.add_widget(HomeScreen(name="HomeScreen"))
         sm.add_widget(LoginScreen(name="LoginScreen"))
         sm.add_widget(RegistroScreen(name="RegistroScreen"))
+        sm.add_widget(PerfilScreen(name="PerfilScreen"))
         sm.add_widget(ListaFuncionariosScreen(name="ListaFuncionariosScreen"))
         sm.add_widget(ListaSalariosScreen(name="ListaSalariosScreen"))
-
+        sm.add_widget(ProgramadoresScreen(name="ProgramadoresScreen"))
         # Establezco la pantalla inicial
         sm.current = "HomeScreen"
         return sm

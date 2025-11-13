@@ -23,21 +23,26 @@
             bold: True
             color: (0, 0, 1, 1)
         TextInput:
+            id: txt_usuario
             hint_text: "Correo electrónico"
             size_hint: None, None
-            size: 450, 60
+            size: 300, 40
             pos_hint: {'center_x': 0.5}
         TextInput:
+            id: txt_pass 
             hint_text: "Contraseña"
             password: True
             size_hint: None, None
-            size: 450, 60
+            size: 300, 40
             pos_hint: {'center_x': 0.5}
+        Label: 
+            id: mensaje
+            text: ""
+            color: (1, 0, 0, 1)
         Button:
             text: "Iniciar sesión"
-            font_size: 30
             size_hint: None, None
-            size: 450, 75
+            size: 200, 50
             pos_hint: {'center_x': 0.5}
-            on_press: app.ir_a("ListaFuncionariosScreen")
-            background_color: (0, 0, 1, 0.8)
+            background_color: (0.2, 0.6, 1, 1)
+            on_press: root.validar_datos() 

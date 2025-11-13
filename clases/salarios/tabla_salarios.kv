@@ -14,12 +14,18 @@
                 pos: self.pos
                 size: self.size
 
+        IconHomeWidget:
+            icon: "home"
+            on_press: app.ir_a("HomeScreen")
         IconLeftWidget:
             icon: "arrow-left"
-            on_press: app.ir_a("HomeScreen")
+            on_press: app.ir_a("ListaFuncionariosScreen:")
+        IconLeftWidget:
+            icon: "arrow-right"
+            on_press: app.ir_a("ProgramadoresScreen")
 
         Label:
-            text: "Lista de Usuarios"
+            text: "Tabla de sus Salarios "
             color: 0, 0, 0, 1
             font_size: 32
         BoxLayout:

@@ -13,8 +13,11 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
         IconLeftWidget:
-            icon: "arrow-left"
-            on_press: app.ir_a("ListaScreen")
+            icon: "home"
+            on_press: app.ir_a("HomeScreen")
+        IconRightWidget:
+            icon: "arrow-right"
+            on_press: app.ir_a("ListaFuncionariosScreen")
 
         Label:
             text: "Mi perfil"

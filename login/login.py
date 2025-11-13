@@ -19,6 +19,6 @@ class LoginScreen(Screen):
                 app.usuario_actual = credenciales[0]
                 self.ids.txt_usuario.text = ""
                 self.ids.txt_pass.text = ""
-                app.ir_a("ListaScreen")
+                app.ir_a("PerfilScreen")
             else:
                 self.ids.mensaje.text = "Usuario o contraseña incorrectos"
