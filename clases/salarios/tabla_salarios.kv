@@ -6,15 +6,16 @@
         md_bg_color: app.theme_cls.bg_dark
         padding: "10dp"
         spacing: "10dp"
-    MDTopAppBar:
-        title: "Tabla de Salarios"
-        elevation: 4
-        md_bg_color: app.theme_cls.primary_color
-        left_action_items:
-            [["home", lambda x: app.ir_a("HomeScreen")],
-            ["arrow-left", lambda x: app.ir_a("ListaFuncionariosScreen")]]
-        right_action_items:
-            [["arrow-right", lambda x: app.ir_a("ProgramadoresScreen")]]
+        
+        
+        MDTopAppBar:
+            title: "Tabla de Salarios"
+            elevation: 4
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items:
+                [["home", lambda x: app.ir_a("HomeScreen")],
+                ["arrow-left", lambda x: app.ir_a("ListaFuncionariosScreen")]]
+
 
         MDLabel:
             text: "Sueldos Registrados"

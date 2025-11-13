@@ -1,53 +1,107 @@
-#:import Window kivy.core.window.Window
-#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
-#:import images_path kivymd.images_path
-<ProgramadoresScreen>:
+<ProgramadoresScreen@MDScreen>:
     name: "ProgramadoresScreen"
-    BoxLayout:
+
+    MDBoxLayout:
         orientation: "vertical"
-        padding: 10
-        spacing: 20
-        canvas.before:
-            Color:
-                rgba: 0.5, 0.5, 0.5, 1
-            Rectangle:
-                pos: self.pos
-                size: 100, 80
-        IconLeftWidget:
-            icon: "home"
-            on_press: app.ir_a("HomeScreen") 
-            pos_hint: {'center_x':0, 'center_y':1}
-        IconLeftWidget:
-            icon: "arrow-left"
-            on_press: app.ir_a("ListaSalariosScreen") 
-            pos_hint: {'center_x':0, 'center_y':1}
-        GridLayout:
-            cols: 2
-            rows: 4
-            Image:
-                source: ("images/telmo.jpg")
-            Label:
-                text:"Juan Ignacio Telmo"
-                size_hint: 1, 1
-                color: (0,0,1,1)
+        md_bg_color: app.theme_cls.bg_dark
+        padding: "10dp"
+        spacing: "10dp"
 
-            Image:
-                source: ("images/carlitos.jpg")
-            Label:
-                text:"Hilario Reddel"
-                size_hint: 1, 1
-                color: (0,0,1,1)
+        MDTopAppBar:
+            title: "Equipo de Programadores"
+            elevation: 4
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [["home", lambda x: app.ir_a("HomeScreen")]]
+        MDLabel:
+            text: "Conoce al equipo"
+            halign: "center"
+            font_style: "H5"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
 
-            Image:
-                source: ("images/kim.jpg")
-            Label:
-                text:"Santiago Kim"
-                size_hint: 1, 1
-                color: (0,0,1,1)
+        ScrollView:
+            MDGridLayout:
+                cols: 2
+                adaptive_height: True
+                spacing: "15dp"
+                padding: "10dp"
 
-            Image:
-                source: ("images/marc.jpg")
-            Label:
-                text:"Bautista Marc"
-                size_hint: 1, 1
-                color: (0,0,1,1)
+                MDCard:
+                    radius: 20
+                    md_bg_color: app.theme_cls.bg_light
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: "300dp"
+                    padding: "10dp"
+
+                    FitImage:
+                        source: "images/telmo.jpg"
+                        size_hint_y: 0.8
+                        radius: [20,20,0,0]
+
+                    MDLabel:
+                        text: "Juan Ignacio Telmo"
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        size_hint_y: 0.2
+
+                MDCard:
+                    radius: 20
+                    md_bg_color: app.theme_cls.bg_light
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: "300dp"
+                    padding: "10dp"
+
+                    FitImage:
+                        source: "images/carlitos.jpg"
+                        size_hint_y: 0.8
+                        radius: [20,20,0,0]
+
+                    MDLabel:
+                        text: "Hilario Reddel"
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        size_hint_y: 0.2
+
+                MDCard:
+                    radius: 20
+                    md_bg_color: app.theme_cls.bg_light
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: "300dp"
+                    padding: "10dp"
+
+                    FitImage:
+                        source: "images/kim.jpg"
+                        size_hint_y: 0.8
+                        radius: [20,20,0,0]
+
+                    MDLabel:
+                        text: "Santiago Kim"
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        size_hint_y: 0.2
+
+                MDCard:
+                    radius: 20
+                    md_bg_color: app.theme_cls.bg_light
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: "300dp"
+                    padding: "10dp"
+
+                    FitImage:
+                        source: "images/marc.jpg"
+                        size_hint_y: 0.8
+                        radius: [20,20,0,0]
+
+                    MDLabel:
+                        text: "Bautista Marc"
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        size_hint_y: 0.2
