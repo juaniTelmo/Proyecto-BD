@@ -5,7 +5,8 @@ class Funcionarios:
     def __init__(self):
         self.tabla = 'funcionarios'
         self.cuil=0
-        self.apellido_y_nombre="" 
+        self.apellido=""
+        self.nombre="" 
         self.reparticion=""
         self.observaciones=""
 
@@ -14,16 +15,16 @@ class Funcionarios:
         return bd.obtener_columnas(self.tabla)
     #funciones con BD
     def insertar_funcionario(self):
-        sql = "INSERT INTO funcionarios (cuil, apellido_y_nombre, reparticion, observaciones) VALUES (%s, %s, %s, %s)"
+        sql = "INSERT INTO funcionarios (cuil, apellido, nombre, reparticion, observaciones) VALUES (%s, %s, %s, %s,%s)"
         valores = (self.cuil, self.apellido_y_nombre, self.reparticion, self.observaciones)
         bd.ejecutar_cambios(sql, valores)
 
     def obtener_funcionarios(self):
-        sql = "SELECT cuil, apellido_y_nombre, reparticion, observaciones FROM funcionarios"
+        sql = "SELECT cuil, apellido, nombre, reparticion, observaciones FROM funcionarios"
         return bd.consultar_datos(sql)
     
     def actualizar_funcionario(self):
-        sql = "UPDATE funcionarios SET apellido_y_nombre=%s, reparticion=%s, observaciones=%s WHERE cuil=%s"
+        sql = "UPDATE funcionarios SET apellido=%s, nombre=%s, reparticion=%s, observaciones=%s WHERE cuil=%s"
         valores = (self.apellido_y_nombre, self.reparticion, self.observaciones, self.cuil)
         bd.ejecutar_cambios(sql, valores)
 

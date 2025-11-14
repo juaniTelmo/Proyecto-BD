@@ -1,0 +1,73 @@
+<EditarFuncionariosScreen>:
+    name: "EditarFuncionariosScreen"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: app.theme_cls.bg_dark
+        padding: "10dp"
+        spacing: "10dp"
+
+        MDTopAppBar:
+            title: "Editar Funcionarios"
+            elevation: 4
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [["arrow-left-bold-box-outline", lambda x: app.ir_a("HomeScreen")]]
+
+        MDCard:
+            radius: 18
+            padding: "14dp"
+            spacing: "12dp"
+            md_bg_color: app.theme_cls.bg_light
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDLabel:
+                text: "Buscar registro a editar"
+                font_style: "H6"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 0,0,0,1
+                size_hint_y: None
+                height: self.texture_size[1] + dp(6)
+
+            MDTextField:
+                id: campo_columna
+                hint_text: "Columna (cuil, apellido, nombre, reparticion...)"
+                mode: "rectangle"
+                size_hint_x: 0.9
+                pos_hint: {"center_x": 0.5}
+
+            MDTextField:
+                id: campo_dato
+                hint_text: "Dato a buscar"
+                mode: "rectangle"
+                size_hint_x: 0.9
+                pos_hint: {"center_x": 0.5}
+
+            MDLabel:
+                id: mensaje
+                text: ""
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 1,0.3,0.3,1
+                size_hint_y: None
+                height: self.texture_size[1] + dp(6)
+
+            MDRaisedButton:
+                text: "Buscar"
+                md_bg_color: app.theme_cls.primary_color
+                size_hint: None, None
+                size: "160dp", "48dp"
+                pos_hint: {"center_x": 0.5}
+                on_release:
+                    root.buscar(campo_columna.text, campo_dato.text)
+
+        MDCard:
+            radius: 18
+            padding: "10dp"
+            md_bg_color: app.theme_cls.bg_light
+            size_hint_y: 1
+
+            MDBoxLayout:
+                id: contenedor_tabla
+                orientation: "vertical"

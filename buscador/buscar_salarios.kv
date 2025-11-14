@@ -1,0 +1,47 @@
+<BuscarSalariosScreen>:
+    name: "BuscarSalariosScreen"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+
+        MDTopAppBar:
+            title: "Buscar Salarios"
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [["arrow-left-bold-box-outline", lambda x: app.ir_a("HomeScreen")]]
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "10dp"
+            spacing: "10dp"
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDTextField:
+                id: columna
+                hint_text: "Columna (id_salario / cuil)"
+                mode: "rectangle"
+
+            MDTextField:
+                id: valor
+                hint_text: "Valor a buscar"
+                mode: "rectangle"
+
+            MDLabel:
+                id: mensaje
+                text: ""
+                halign: "center"
+                theme_text_color: "Error"
+
+            MDRaisedButton:
+                text: "Buscar"
+                pos_hint: {"center_x": 0.5}
+                on_release: root.buscar(columna.text, valor.text)
+
+        MDCard:
+            radius: 15
+            padding: "8dp"
+
+            MDBoxLayout:
+                id: contenedor_tabla
+                orientation: "vertical"

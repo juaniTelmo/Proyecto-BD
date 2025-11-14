@@ -1,0 +1,39 @@
+<EditarSalariosScreen>:
+    name: "EditarSalariosScreen"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "12dp"
+        padding: "10dp"
+
+        MDTopAppBar:
+            title: "Editar Salario"
+            left_action_items: [["arrow-left-bold-box-outline", lambda x: app.ir_a("BuscarSalariosScreen")]]
+            md_bg_color: app.theme_cls.primary_color
+
+        ScrollView:
+            MDBoxLayout:
+                id: contenedor_inputs
+                orientation: "vertical"
+                spacing: "8dp"
+                padding: "10dp"
+                adaptive_height: True
+
+        MDRaisedButton:
+            text: "Guardar cambios"
+            md_bg_color: app.theme_cls.primary_color
+            pos_hint: {"center_x": 0.5}
+            on_release: root.guardar()
+
+        MDFlatButton:
+            text: "Eliminar registro"
+            theme_text_color: "Error"
+            pos_hint: {"center_x": 0.5}
+            on_release: root.eliminar()
+
+        MDLabel:
+            id: mensaje
+            text: ""
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1,0.3,0.3,1
