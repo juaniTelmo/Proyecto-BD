@@ -1,0 +1,62 @@
+<EdicionScreen@MDScreen>:
+    name: "EdicionScreen"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: app.theme_cls.bg_dark
+        padding: "16dp"
+        spacing: "12dp"
+
+        MDTopAppBar:
+            id: titulo_appbar
+            title: "Editar Registro"
+            elevation: 4
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [["arrow-left", lambda x: app.ir_a(root.origen)]]
+
+        MDCard:
+            padding: "12dp"
+            radius: 12
+            md_bg_color: app.theme_cls.bg_light
+            orientation: "vertical"
+
+            MDLabel:
+                text: "Modifique los valores necesarios"
+                halign: "center"
+                font_style: "Subtitle1"
+                theme_text_color: "Custom"
+                text_color: 0,0,0,1
+                size_hint_y: None
+                height: self.texture_size[1] + dp(8)
+
+            ScrollView:
+                MDBoxLayout:
+                    id: contenedor_inputs
+                    orientation: "vertical"
+                    adaptive_height: True
+                    padding: "10dp"
+                    spacing: "10dp"
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: "64dp"
+            spacing: "12dp"
+            padding: "6dp"
+
+            MDRaisedButton:
+                text: "Guardar cambios"
+                md_bg_color: app.theme_cls.primary_color
+                on_release: root.guardar_cambios()
+
+            MDFlatButton:
+                text: "Eliminar"
+                on_release: root.eliminar_registro()
+
+        MDLabel:
+            id: msg_info
+            text: ""
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 0.6, 0.2, 1
+            size_hint_y: None
+            height: self.texture_size[1] + dp(6)

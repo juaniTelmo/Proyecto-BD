@@ -11,8 +11,8 @@
             title: "Búsqueda Avanzada"
             elevation: 4
             md_bg_color: app.theme_cls.primary_color
-            left_action_items: [["arrow-left-bold-box-outline", lambda x: app.ir_a("HomeScreen")]]
-
+            left_action_items:["arrow-left-bold-box-outline", lambda x: app.ir_a("homeScreen")]
+            right:_action_items: ["arrow-right-bold-box-outline", lambda x: app.ir_a("EdicionScreen")]
         MDLabel:
             text: "Búsqueda de Funcionarios"
             halign: "center"
@@ -35,10 +35,11 @@
                 mode: "rectangle"
                 size_hint_x: 0.9
                 pos_hint: {"center_x": 0.5}
+
             Spinner:
                 id: spinner_columnas
                 text: "Selecciona columna"
-                values: []  # Aquí se llenará desde Python
+                values: []
                 size_hint_x: 0.9
                 pos_hint: {"center_x": 0.5}
 
@@ -49,4 +50,3 @@
                 size: "180dp", "50dp"
                 pos_hint: {"center_x": 0.5}
                 on_release: func.buscar_funcionarios()
-

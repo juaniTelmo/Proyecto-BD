@@ -25,7 +25,7 @@ from registro.registro import RegistroScreen
 from clases.usuario.perfil_usuario import PerfilScreen
 from programadores.programadores import ProgramadoresScreen
 from buscar_funcionarios.buscar_funcionarios import BuscarFuncionariosScreen
-
+from editar_tablas.editar_tablas import EdicionScreen
 
 # Defino la clase principal de la aplicación
 
@@ -47,7 +47,7 @@ class MiApp(MDApp):
         Builder.load_file("clases/usuario/perfil_usuario.kv")
         Builder.load_file("programadores/programadores.kv")
         Builder.load_file("buscar_funcionarios/buscar_funcionarios.kv")
-
+        Builder.load_file("editar_tablas/editar_tablas.kv")
 
         sm = ScreenManager()
         # Agrego las pantallas al ScreenManager
@@ -59,7 +59,8 @@ class MiApp(MDApp):
         sm.add_widget(ListaSalariosScreen(name="ListaSalariosScreen"))
         sm.add_widget(ProgramadoresScreen(name="ProgramadoresScreen"))
         sm.add_widget(BuscarFuncionariosScreen(name="BuscarFuncionariosScreen"))
-        
+        sm.add_widget(EdicionScreen(name="EdicionScreen"))
+
         # Establezco la pantalla inicial
         sm.current = "HomeScreen"
         return sm
